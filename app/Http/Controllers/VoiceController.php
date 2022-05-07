@@ -15,6 +15,8 @@ use App\Models\Character;
 use App\Models\Impersonation;
 use App\Models\HomeStudio;
 use App\Models\Voice;
+use App\Models\VoiceAudio;
+use Carbon\Carbon;
 
 class VoiceController extends BaseController
 {
@@ -59,6 +61,8 @@ class VoiceController extends BaseController
 
             $data = $request->all();
 
+            $now = Carbon::now();
+
             $check = $model->validator($data);
 
             if ($check->fails()) {
@@ -68,6 +72,20 @@ class VoiceController extends BaseController
             $create = $model::create($data);
 
             if ($create) {
+                $audioData = [];
+
+                foreach ($data['mp3_title'] as $index => $mp3Title) {
+                    $audioData[] = [
+                        'mp3_title' => $mp3Title,
+                        'mp3' => $data['mp3'][$index],
+                        'voice_id' => $create->id,
+                        'created_at' => $now,
+                        'updated_at' => $now
+                    ];
+                }
+
+                VoiceAudio::insert($audioData);
+
                 DB::commit();
 
                 return redirect(route('voices.index'))->with('success', 'Voice added successfully!');
@@ -111,6 +129,8 @@ class VoiceController extends BaseController
 
             $data = $request->all();
 
+            $now = Carbon::now();
+
             // Find exists.
             $find = $model::find($id);
 
@@ -127,6 +147,23 @@ class VoiceController extends BaseController
             $update = $find->update($data);
 
             if ($update) {
+                // Remove old voice audio first.
+                VoiceAudio::where('voice_id', $id)->delete();
+
+                $audioData = [];
+
+                foreach ($data['mp3_title'] as $index => $mp3Title) {
+                    $audioData[] = [
+                        'mp3_title' => $mp3Title,
+                        'mp3' => $data['mp3'][$index],
+                        'voice_id' => $id,
+                        'created_at' => $now,
+                        'updated_at' => $now
+                    ];
+                }
+
+                VoiceAudio::insert($audioData);
+
                 DB::commit();
 
                 return redirect(route('voices.index'))->with('success', 'Voice updated successfully!');
@@ -156,6 +193,8 @@ class VoiceController extends BaseController
             $delete = $find->delete();
 
             if ($delete) {
+                $find->voiceAudios()->delete();
+
                 DB::commit();
 
                 return redirect(route('voices.index'))->with('success', 'Voice deleted successfully!');

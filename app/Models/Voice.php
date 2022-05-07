@@ -43,7 +43,10 @@ class Voice extends BaseModel
             'delivery_style_id' => ['required', 'integer', 'exists:' . (new DeliveryStyle())->getTableName() . ',id'],
             'character_id' => ['required', 'integer', 'exists:' . (new Character())->getTableName() . ',id'],
             'impersonation_id' => ['required', 'integer', 'exists:' . (new Impersonation())->getTableName() . ',id'],
-            'home_studio_id' => ['required', 'integer', 'exists:' . (new HomeStudio())->getTableName() . ',id']
+            'home_studio_id' => ['required', 'integer', 'exists:' . (new HomeStudio())->getTableName() . ',id'],
+            'mp3_title.*' => ['required', 'string'],
+            'mp3.*' => ['required', 'string'],
+            'voice_id.*' => ['nullable', 'integer', 'exists:' . (new Voice())->getTableName() . ',id']
         ], [
             'gender_id.required' => 'The gender field is required.',
             'age_group_id.required' => 'The age group field is required.',
@@ -102,5 +105,10 @@ class Voice extends BaseModel
     public function HomeStudio()
     {
         return $this->hasOne(HomeStudio::class, 'id', 'home_studio_id');
+    }
+
+    public function voiceAudios()
+    {
+        return $this->hasMany(VoiceAudio::class, 'voice_id', 'id');
     }
 }

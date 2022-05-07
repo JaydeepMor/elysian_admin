@@ -24,7 +24,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-sm-6">
-                                            <h6 class="mb-0">Full Name</h6>
+                                            <h6 class="mb-0">User Name</h6>
                                             <input type="text" class="form-control" name="user_name" placeholder="jon_doe" value="{{ old('user_name', $voice->user_name) }}" required />
 
                                             @error('user_name')
@@ -211,6 +211,104 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <br />
+                                    <div class="row" id="row-mp3">
+                                        <h6 class="mb-0">
+                                            MP3
+                                        </h6>
+
+                                        @if (!empty(old("mp3_title")))
+                                            @foreach (old("mp3_title") as $index => $mp3Title)
+                                                <div style="display: inline-flex;" id="{{ ($index == 0) ? 'fixed-mp3' : '' }}" class="{{ ($index > 0) ? 'fixed-mp3' : '' }}">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="mp3_title[]" placeholder="John Doe - Hard Sell" value="{{ old('mp3_title.' . $index) }}" required />
+
+                                                        @error('mp3_title.' . $index)
+                                                            <span style="color: #e85252;" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-sm-5" style="min-width: 47%;">
+                                                        <input type="text" class="form-control" name="mp3[]" placeholder="https://test.mp3" value="{{ old('mp3.' . $index) }}" required />
+
+                                                        @error('mp3.' . $index)
+                                                            <span style="color: #e85252;" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-sm-1">
+                                                        @if ($index > 0)
+                                                            <button class="btn btn-light remove-mp3" type="button">&minus;</button>
+                                                        @else
+                                                            <button class="btn btn-light" type="button" id="add-mp3">&plus;</button>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @elseif (!empty($voice->voiceAudios) && !$voice->voiceAudios->isEmpty())
+                                            @foreach ($voice->voiceAudios as $index => $voiceAudios)
+                                                <div style="display: inline-flex;" id="{{ ($index == 0) ? 'fixed-mp3' : '' }}" class="{{ ($index > 0) ? 'fixed-mp3' : '' }}">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" name="mp3_title[]" placeholder="John Doe - Hard Sell" value="{{ $voiceAudios->mp3_title }}" required />
+
+                                                        @error('mp3_title.' . $index)
+                                                            <span style="color: #e85252;" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-sm-5" style="min-width: 47%;">
+                                                        <input type="text" class="form-control" name="mp3[]" placeholder="https://test.mp3" value="{{ $voiceAudios->mp3 }}" required />
+
+                                                        @error('mp3.' . $index)
+                                                            <span style="color: #e85252;" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-sm-1">
+                                                        @if ($index > 0)
+                                                            <button class="btn btn-light remove-mp3" type="button">&minus;</button>
+                                                        @else
+                                                            <button class="btn btn-light" type="button" id="add-mp3">&plus;</button>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div style="display: inline-flex;" id="fixed-mp3">
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" name="mp3_title[]" placeholder="John Doe - Hard Sell" value="{{ old('mp3_title.0') }}" required />
+
+                                                    @error('mp3_title.0')
+                                                        <span style="color: #e85252;" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="col-sm-5" style="min-width: 47%;">
+                                                    <input type="text" class="form-control" name="mp3[]" placeholder="https://test.mp3" value="{{ old('mp3.0') }}" required />
+
+                                                    @error('mp3.0')
+                                                        <span style="color: #e85252;" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="col-sm-1">
+                                                    <button class="btn btn-light" type="button" id="add-mp3">&plus;</button>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12" style="text-align: right;">
@@ -226,4 +324,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section("script")
+    <script src="{{ asset('assets/js/voice.js') }}"></script>
 @endsection

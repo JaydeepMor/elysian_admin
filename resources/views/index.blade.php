@@ -22,7 +22,7 @@
                 @endif
                 <div class="d-flex align-items-center">
                     <div>
-                        <h5 class="mb-0">Order Summary</h5>
+                        <h5 class="mb-0">Voices</h5>
                     </div>
                     <div class="font-22 ms-auto text-white">
                         <a href="{{ route('voices.create') }}">

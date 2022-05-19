@@ -23,7 +23,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-sm-6">
-                                            <h6 class="mb-0">User Name</h6>
+                                            <h6 class="mb-0">Profile</h6>
                                             <input type="text" class="form-control" name="user_name" placeholder="jon_doe" value="{{ old('user_name', '#') }}" required />
 
                                             @error('user_name')
@@ -154,8 +154,8 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Character</h6>
-                                            <select name="character_id" class="form-control" required>
-                                                <option value="" disabled selected>-- Select --</option>
+                                            <select name="character_id" class="form-control">
+                                                <option value="" selected>-- Select --</option>
 
                                                 @if (!empty($characters))
                                                     @foreach ($characters as $character)

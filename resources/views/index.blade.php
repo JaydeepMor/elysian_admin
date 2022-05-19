@@ -37,7 +37,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>User Name</th>
+                                <th>Profile</th>
                                 <th>Gender</th>
                                 <th>Age Group</th>
                                 <th>Race</th>
@@ -63,7 +63,7 @@
                                         <td>{{ $voice->language->text }}</td>
                                         <td>{{ $voice->accent->text }}</td>
                                         <td>{{ $voice->deliveryStyle->text }}</td>
-                                        <td>{{ $voice->character->text }}</td>
+                                        <td>{{ !empty($voice->character) ? $voice->character->text : '-' }}</td>
                                         <td>{{ $voice->impersonation->text }}</td>
                                         <td>{{ $voice->homeStudio->text }}</td>
                                         <td>

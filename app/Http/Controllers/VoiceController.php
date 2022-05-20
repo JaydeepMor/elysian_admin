@@ -52,6 +52,146 @@ class VoiceController extends BaseController
         return view('voices.create', compact('genders', 'ageGroups', 'races', 'languages', 'accents', 'deliveryStyles', 'characters', 'impersonations', 'homeStudios'));
     }
 
+    public function rewriteDataList(array $data)
+    {
+        if (!empty($data['gender_id'])) {
+            $find = Gender::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['gender_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = Gender::insertGetId(['text' => (string)$data['gender_id']]);
+
+                if ($create) {
+                    $data['gender_id'] = $create;
+                }
+            } else {
+                $data['gender_id'] = $find->id;
+            }
+        }
+
+        if (!empty($data['age_group_id'])) {
+            $find = AgeGroup::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['age_group_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = AgeGroup::insertGetId(['text' => (string)$data['age_group_id']]);
+
+                if ($create) {
+                    $data['age_group_id'] = $create;
+                }
+            } else {
+                $data['age_group_id'] = $find->id;
+            }
+        }
+
+        if (!empty($data['race_id'])) {
+            $find = Race::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['race_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = Race::insertGetId(['text' => (string)$data['race_id']]);
+
+                if ($create) {
+                    $data['race_id'] = $create;
+                }
+            } else {
+                $data['race_id'] = $find->id;
+            }
+        }
+
+        if (!empty($data['language_id'])) {
+            $find = Language::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['language_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = Language::insertGetId(['text' => (string)$data['language_id']]);
+
+                if ($create) {
+                    $data['language_id'] = $create;
+                }
+            } else {
+                $data['language_id'] = $find->id;
+            }
+        }
+
+        if (!empty($data['accent_id'])) {
+            $find = Accent::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['accent_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = Accent::insertGetId(['text' => (string)$data['accent_id']]);
+
+                if ($create) {
+                    $data['accent_id'] = $create;
+                }
+            } else {
+                $data['accent_id'] = $find->id;
+            }
+        }
+
+        if (!empty($data['delivery_style_id'])) {
+            $find = DeliveryStyle::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['delivery_style_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = DeliveryStyle::insertGetId(['text' => (string)$data['delivery_style_id']]);
+
+                if ($create) {
+                    $data['delivery_style_id'] = $create;
+                }
+            } else {
+                $data['delivery_style_id'] = $find->id;
+            }
+        }
+
+        if (!empty($data['character_id'])) {
+            $find = Character::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['character_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = Character::insertGetId(['text' => (string)$data['character_id']]);
+
+                if ($create) {
+                    $data['character_id'] = $create;
+                }
+            } else {
+                $data['character_id'] = $find->id;
+            }
+        }
+
+        if (!empty($data['impersonation_id'])) {
+            $find = Impersonation::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['impersonation_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = Impersonation::insertGetId(['text' => (string)$data['impersonation_id']]);
+
+                if ($create) {
+                    $data['impersonation_id'] = $create;
+                }
+            } else {
+                $data['impersonation_id'] = $find->id;
+            }
+        }
+
+        if (!empty($data['home_studio_id'])) {
+            $find = HomeStudio::select('id')->whereRaw("LOWER(`text`) = '" . strtolower($data['home_studio_id']) . "'")->first();
+
+            // Add new if not found.
+            if (empty($find)) {
+                $create = HomeStudio::insertGetId(['text' => (string)$data['home_studio_id']]);
+
+                if ($create) {
+                    $data['home_studio_id'] = $create;
+                }
+            } else {
+                $data['home_studio_id'] = $find->id;
+            }
+        }
+
+        return $data;
+    }
+
     public function store(Request $request)
     {
         DB::beginTransaction();
@@ -62,6 +202,9 @@ class VoiceController extends BaseController
             $data = $request->all();
 
             $now = Carbon::now();
+
+            // Update datalist value.
+            $data = $this->rewriteDataList($data);
 
             $check = $model->validator($data);
 
@@ -91,6 +234,7 @@ class VoiceController extends BaseController
                 return redirect(route('voices.index'))->with('success', 'Voice added successfully!');
             }
         } catch (\Exception $e) {
+            dd($e);
             DB::rollback();
         } catch (\Throwable $e) {
             DB::rollback();
@@ -137,6 +281,9 @@ class VoiceController extends BaseController
             if (empty($find)) {
                 return redirect(route('voices.index'))->with('error', 'Voice not found! Please reload page and try again.');
             }
+
+            // Update datalist value.
+            $data = $this->rewriteDataList($data);
 
             $check = $model->validator($data);
 

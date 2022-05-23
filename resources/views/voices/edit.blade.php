@@ -152,11 +152,11 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Accent</h6>
-                                            <input list="accents" name="accent_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('accent_id', $voice->accent->text) }}" autocomplete="off" />
+                                            <input list="accents" name="accent_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('accent_id', (!empty($voice->accent) ? $voice->accent->text : '')) }}" autocomplete="off" />
                                             <datalist id="accents">
                                                 @if (!empty($accents))
                                                     @foreach ($accents as $accent)
-                                                        <option value="{{ $accent->text }}" {{ old('accent_id', $voice->accent->text) == $accent->text ? 'selected' : '' }}>{{ $accent->text }}</option>
+                                                        <option value="{{ $accent->text }}" {{ old('accent_id', (!empty($voice->accent) ? $voice->accent->text : '')) == $accent->text ? 'selected' : '' }}>{{ $accent->text }}</option>
                                                     @endforeach
                                                 @endif
                                             </datalist>
@@ -179,11 +179,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Delivery Style</h6>
-                                            <input list="delivery_styles" name="delivery_style_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('delivery_style_id', $voice->deliveryStyle->text) }}" autocomplete="off" />
+                                            <input list="delivery_styles" name="delivery_style_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('delivery_style_id', (!empty($voice->deliveryStyle) ? $voice->deliveryStyle->text : '')) }}" autocomplete="off" />
                                             <datalist id="delivery_styles">
                                                 @if (!empty($deliveryStyles))
                                                     @foreach ($deliveryStyles as $deliveryStyle)
-                                                        <option value="{{ $deliveryStyle->text }}" {{ old('delivery_style_id', $voice->deliveryStyle->text) == $deliveryStyle->text ? 'selected' : '' }}>{{ $deliveryStyle->text }}</option>
+                                                        <option value="{{ $deliveryStyle->text }}" {{ old('delivery_style_id', (!empty($voice->deliveryStyle) ? $voice->deliveryStyle->text : '')) == $deliveryStyle->text ? 'selected' : '' }}>{{ $deliveryStyle->text }}</option>
                                                     @endforeach
                                                 @endif
                                             </datalist>
@@ -236,11 +236,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Impersonation</h6>
-                                            <input list="impersonations" name="impersonation_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('impersonation_id', $voice->impersonation->text) }}" autocomplete="off" />
+                                            <input list="impersonations" name="impersonation_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('impersonation_id', (!empty($voice->impersonation) ? $voice->impersonation->text : '')) }}" autocomplete="off" />
                                             <datalist id="impersonations">
                                                 @if (!empty($impersonations))
                                                     @foreach ($impersonations as $impersonation)
-                                                        <option value="{{ $impersonation->text }}" {{ old('impersonation_id', $voice->impersonation->text) == $impersonation->text ? 'selected' : '' }}>{{ $impersonation->text }}</option>
+                                                        <option value="{{ $impersonation->text }}" {{ old('impersonation_id', (!empty($voice->impersonation) ? $voice->impersonation->text : '')) == $impersonation->text ? 'selected' : '' }}>{{ $impersonation->text }}</option>
                                                     @endforeach
                                                 @endif
                                             </datalist>
@@ -266,11 +266,11 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Home Studio</h6>
-                                            <input list="home_studios" name="home_studio_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('home_studio_id', $voice->homeStudio->text) }}" autocomplete="off" />
+                                            <input list="home_studios" name="home_studio_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('home_studio_id', (!empty($voice->homeStudio) ? $voice->homeStudio->text : '')) }}" autocomplete="off" />
                                             <datalist id="home_studios">
                                                 @if (!empty($homeStudios))
                                                     @foreach ($homeStudios as $homeStudio)
-                                                        <option value="{{ $homeStudio->text }}" {{ old('home_studio_id', $voice->homeStudio->text) == $homeStudio->text ? 'selected' : '' }}>{{ $homeStudio->text }}</option>
+                                                        <option value="{{ $homeStudio->text }}" {{ old('home_studio_id', (!empty($voice->homeStudio) ? $voice->homeStudio->text : '')) == $homeStudio->text ? 'selected' : '' }}>{{ $homeStudio->text }}</option>
                                                     @endforeach
                                                 @endif
                                             </datalist>

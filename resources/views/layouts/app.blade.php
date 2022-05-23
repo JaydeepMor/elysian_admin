@@ -24,7 +24,7 @@
     <title>{{ env('APP_NAME') }}</title>
 </head>
 
-<body class="bg-theme bg-theme1">
+<body class="bg-theme bg-theme9">
     <!--wrapper-->
     <div class="wrapper">
         <!--start header -->

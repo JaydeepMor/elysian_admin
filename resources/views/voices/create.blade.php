@@ -150,7 +150,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Accent</h6>
-                                            <input list="accents" name="accent_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('accent_id') }}" autocomplete="off" />
+                                            <input list="accents" name="accent_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('accent_id') }}" autocomplete="off" />
                                             <datalist id="accents">
                                                 @if (!empty($accents))
                                                     @foreach ($accents as $accent)
@@ -177,7 +177,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Delivery Style</h6>
-                                            <input list="delivery_styles" name="delivery_style_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('delivery_style_id') }}" autocomplete="off" />
+                                            <input list="delivery_styles" name="delivery_style_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('delivery_style_id') }}" autocomplete="off" />
                                             <datalist id="delivery_styles">
                                                 @if (!empty($deliveryStyles))
                                                     @foreach ($deliveryStyles as $deliveryStyle)
@@ -234,7 +234,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Impersonation</h6>
-                                            <input list="impersonations" name="impersonation_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('impersonation_id') }}" autocomplete="off" />
+                                            <input list="impersonations" name="impersonation_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('impersonation_id') }}" autocomplete="off" />
                                             <datalist id="impersonations">
                                                 @if (!empty($impersonations))
                                                     @foreach ($impersonations as $impersonation)
@@ -264,7 +264,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <h6 class="mb-0">Home Studio</h6>
-                                            <input list="home_studios" name="home_studio_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('home_studio_id') }}" autocomplete="off" />
+                                            <input list="home_studios" name="home_studio_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('home_studio_id') }}" autocomplete="off" />
                                             <datalist id="home_studios">
                                                 @if (!empty($homeStudios))
                                                     @foreach ($homeStudios as $homeStudio)

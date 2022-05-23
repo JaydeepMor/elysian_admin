@@ -61,11 +61,11 @@
                                         <td>{{ $voice->ageGroup->text }}</td>
                                         <td>{{ $voice->race->text }}</td>
                                         <td>{{ $voice->language->text }}</td>
-                                        <td>{{ $voice->accent->text }}</td>
-                                        <td>{{ $voice->deliveryStyle->text }}</td>
+                                        <td>{{ !empty($voice->accent) ? $voice->accent->text : '-' }}</td>
+                                        <td>{{ !empty($voice->deliveryStyle) ? $voice->deliveryStyle->text : '-' }}</td>
                                         <td>{{ !empty($voice->character) ? $voice->character->text : '-' }}</td>
-                                        <td>{{ $voice->impersonation->text }}</td>
-                                        <td>{{ $voice->homeStudio->text }}</td>
+                                        <td>{{ !empty($voice->impersonation) ? $voice->impersonation->text : '-' }}</td>
+                                        <td>{{ !empty($voice->homeStudio) ? $voice->homeStudio->text : '-' }}</td>
                                         <td>
                                             <div class="d-flex order-actions">
                                                 <a href="{{ route('voices.edit', $voice->id) }}"><i class="bx bx-edit"></i></a>

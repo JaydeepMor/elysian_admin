@@ -12,4 +12,9 @@ class Language extends BaseModel
     protected $fillable = [
         'text'
     ];
+
+    public function voices()
+    {
+        return $this->belongsToMany(Voice::class, VoiceId::class);
+    }
 }

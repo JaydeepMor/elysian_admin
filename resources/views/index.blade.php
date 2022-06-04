@@ -60,11 +60,11 @@
                                         <td>{{ $voice->gender->text }}</td>
                                         <td>{{ $voice->ageGroup->text }}</td>
                                         <td>{{ $voice->race->text }}</td>
-                                        <td>{{ $voice->language->text }}</td>
-                                        <td>{{ !empty($voice->accent) ? $voice->accent->text : '-' }}</td>
-                                        <td>{{ !empty($voice->deliveryStyle) ? $voice->deliveryStyle->text : '-' }}</td>
-                                        <td>{{ !empty($voice->character) ? $voice->character->text : '-' }}</td>
-                                        <td>{{ !empty($voice->impersonation) ? $voice->impersonation->text : '-' }}</td>
+                                        <td>{{ implode(", ", $voice->languages->pluck('text')->toArray()) }}</td>
+                                        <td>{{ (!empty($voice->accents) && !$voice->accents->isEmpty()) ? implode(", ", $voice->accents->pluck('text')->toArray()) : '-' }}</td>
+                                        <td>{{ (!empty($voice->deliveryStyles) && !$voice->deliveryStyles->isEmpty()) ? implode(", ", $voice->deliveryStyles->pluck('text')->toArray()) : '-' }}</td>
+                                        <td>{{ (!empty($voice->characters) && !$voice->characters->isEmpty()) ? implode(", ", $voice->characters->pluck('text')->toArray()) : '-' }}</td>
+                                        <td>{{ (!empty($voice->impersonations) && !$voice->impersonations->isEmpty()) ? implode(", ", $voice->impersonations->pluck('text')->toArray()) : '-' }}</td>
                                         <td>{{ !empty($voice->homeStudio) ? $voice->homeStudio->text : '-' }}</td>
                                         <td>
                                             <div class="d-flex order-actions">

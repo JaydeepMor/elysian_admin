@@ -119,150 +119,6 @@
                                             @enderror
                                         </div>
                                         <div class="col-sm-6">
-                                            <h6 class="mb-0">Language</h6>
-                                            <input list="languages" name="language_id" class="form-control" required placeholder="Enter new or choose any of one." value="{{ old('language_id') }}" autocomplete="off" />
-                                            <datalist id="languages">
-                                                @if (!empty($languages))
-                                                    @foreach ($languages as $language)
-                                                        <option value="{{ $language->text }}" {{ old('language_id') == $language->text ? 'selected' : '' }}>{{ $language->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </datalist>
-
-                                            <!-- <select name="language_id" class="form-control" required>
-                                                <option value="" disabled selected>-- Select --</option>
-
-                                                @if (!empty($languages))
-                                                    @foreach ($languages as $language)
-                                                        <option value="{{ $language->id }}" {{ old('language_id') == $language->id ? 'selected' : '' }}>{{ $language->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select> -->
-
-                                            @error('language_id')
-                                                <span style="color: #e85252;" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h6 class="mb-0">Accent</h6>
-                                            <input list="accents" name="accent_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('accent_id') }}" autocomplete="off" />
-                                            <datalist id="accents">
-                                                @if (!empty($accents))
-                                                    @foreach ($accents as $accent)
-                                                        <option value="{{ $accent->text }}" {{ old('accent_id') == $accent->text ? 'selected' : '' }}>{{ $accent->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </datalist>
-
-                                            <!-- <select name="accent_id" class="form-control" required>
-                                                <option value="" disabled selected>-- Select --</option>
-
-                                                @if (!empty($accents))
-                                                    @foreach ($accents as $accent)
-                                                        <option value="{{ $accent->id }}" {{ old('accent_id') == $accent->id ? 'selected' : '' }}>{{ $accent->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select> -->
-
-                                            @error('accent_id')
-                                                <span style="color: #e85252;" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h6 class="mb-0">Delivery Style</h6>
-                                            <input list="delivery_styles" name="delivery_style_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('delivery_style_id') }}" autocomplete="off" />
-                                            <datalist id="delivery_styles">
-                                                @if (!empty($deliveryStyles))
-                                                    @foreach ($deliveryStyles as $deliveryStyle)
-                                                        <option value="{{ $deliveryStyle->text }}" {{ old('delivery_style_id') == $deliveryStyle->text ? 'selected' : '' }}>{{ $deliveryStyle->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </datalist>
-
-                                            <!-- <select name="delivery_style_id" class="form-control" required>
-                                                <option value="" disabled selected>-- Select --</option>
-
-                                                @if (!empty($deliveryStyles))
-                                                    @foreach ($deliveryStyles as $deliveryStyle)
-                                                        <option value="{{ $deliveryStyle->id }}" {{ old('delivery_style_id') == $deliveryStyle->id ? 'selected' : '' }}>{{ $deliveryStyle->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select> -->
-
-                                            @error('delivery_style_id')
-                                                <span style="color: #e85252;" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h6 class="mb-0">Character</h6>
-                                            <input list="characters" name="character_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('character_id') }}" autocomplete="off" />
-                                            <datalist id="characters">
-                                                @if (!empty($characters))
-                                                    @foreach ($characters as $character)
-                                                        <option value="{{ $character->text }}" {{ old('character_id') == $character->text ? 'selected' : '' }}>{{ $character->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </datalist>
-
-                                            <!-- <select name="character_id" class="form-control">
-                                                <option value="" selected>-- Select --</option>
-
-                                                @if (!empty($characters))
-                                                    @foreach ($characters as $character)
-                                                        <option value="{{ $character->id }}" {{ old('character_id') == $character->id ? 'selected' : '' }}>{{ $character->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select> -->
-
-                                            @error('character_id')
-                                                <span style="color: #e85252;" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h6 class="mb-0">Impersonation</h6>
-                                            <input list="impersonations" name="impersonation_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('impersonation_id') }}" autocomplete="off" />
-                                            <datalist id="impersonations">
-                                                @if (!empty($impersonations))
-                                                    @foreach ($impersonations as $impersonation)
-                                                        <option value="{{ $impersonation->text }}" {{ old('impersonation_id') == $impersonation->text ? 'selected' : '' }}>{{ $impersonation->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </datalist>
-
-                                            <!-- <select name="impersonation_id" class="form-control" required>
-                                                <option value="" disabled selected>-- Select --</option>
-
-                                                @if (!empty($impersonations))
-                                                    @foreach ($impersonations as $impersonation)
-                                                        <option value="{{ $impersonation->id }}" {{ old('impersonation_id') == $impersonation->id ? 'selected' : '' }}>{{ $impersonation->text }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select> -->
-
-                                            @error('impersonation_id')
-                                                <span style="color: #e85252;" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-sm-6">
                                             <h6 class="mb-0">Home Studio</h6>
                                             <input list="home_studios" name="home_studio_id" class="form-control" placeholder="Enter new or choose any of one. (Optional)" value="{{ old('home_studio_id') }}" autocomplete="off" />
                                             <datalist id="home_studios">
@@ -298,61 +154,254 @@
 
                                         @if (!empty(old("mp3_title")))
                                             @foreach (old("mp3_title") as $index => $mp3Title)
-                                                <div style="display: inline-flex;" id="{{ ($index == 0) ? 'fixed-mp3' : '' }}" class="{{ ($index > 0) ? 'fixed-mp3' : '' }}">
-                                                    <div class="col-sm-6">
-                                                        <input type="text" class="form-control" name="mp3_title[]" placeholder="John Doe - Hard Sell" value="{{ old('mp3_title.' . $index) }}" required />
+                                                <div id="{{ ($index == 0) ? 'fixed-mp3' : '' }}" class="{{ ($index > 0) ? 'fixed-mp3' : '' }}">
+                                                    <div class="row">
+                                                        <div style="display: inline-flex;">
+                                                            <div class="col-sm-6">
+                                                                <input list="languages" name="language_id[]" class="form-control" required placeholder="Language : Enter new or choose any of one." value="{{ old('language_id.' . $index) }}" autocomplete="off" />
+                                                                <datalist id="languages">
+                                                                    @if (!empty($languages))
+                                                                        @foreach ($languages as $language)
+                                                                            <option value="{{ $language->text }}" {{ old('language_id.' . $index) == $language->text ? 'selected' : '' }}>{{ $language->text }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </datalist>
 
-                                                        @error('mp3_title.' . $index)
-                                                            <span style="color: #e85252;" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
+                                                                @error('language_id.' . $index)
+                                                                    <span style="color: #e85252;" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <input list="accents" name="accent_id[]" class="form-control" placeholder="Accent : Enter new or choose any of one. (Optional)" value="{{ old('accent_id.' . $index) }}" autocomplete="off" />
+                                                                <datalist id="accents">
+                                                                    @if (!empty($accents))
+                                                                        @foreach ($accents as $accent)
+                                                                            <option value="{{ $accent->text }}" {{ old('accent_id.' . $index) == $accent->text ? 'selected' : '' }}>{{ $accent->text }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </datalist>
+
+                                                                @error('accent_id.' . $index)
+                                                                    <span style="color: #e85252;" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div style="display: inline-flex;">
+                                                            <div class="col-sm-6">
+                                                                <input list="delivery_styles" name="delivery_style_id[]" class="form-control" placeholder="Delivery Style : Enter new or choose any of one. (Optional)" value="{{ old('delivery_style_id.' . $index) }}" autocomplete="off" />
+                                                                <datalist id="delivery_styles">
+                                                                    @if (!empty($deliveryStyles))
+                                                                        @foreach ($deliveryStyles as $deliveryStyle)
+                                                                            <option value="{{ $deliveryStyle->text }}" {{ old('delivery_style_id.' . $index) == $deliveryStyle->text ? 'selected' : '' }}>{{ $deliveryStyle->text }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </datalist>
 
-                                                    <div class="col-sm-5" style="min-width: 47%;">
-                                                        <input type="text" class="form-control" name="mp3[]" placeholder="https://test.mp3" value="{{ old('mp3.' . $index) }}" required />
+                                                                @error('delivery_style_id.' . $index)
+                                                                    <span style="color: #e85252;" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <input list="characters" name="character_id[]" class="form-control" placeholder="Character : Enter new or choose any of one. (Optional)" value="{{ old('character_id.' . $index) }}" autocomplete="off" />
+                                                                <datalist id="characters">
+                                                                    @if (!empty($characters))
+                                                                        @foreach ($characters as $character)
+                                                                            <option value="{{ $character->text }}" {{ old('character_id.' . $index) == $character->text ? 'selected' : '' }}>{{ $character->text }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </datalist>
 
-                                                        @error('mp3.' . $index)
-                                                            <span style="color: #e85252;" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
+                                                                @error('character_id.' . $index)
+                                                                    <span style="color: #e85252;" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div style="display: inline-flex;">
+                                                            <div class="col-sm-12">
+                                                                <input list="impersonations" name="impersonation_id[]" class="form-control" placeholder="Impersonation : Enter new or choose any of one. (Optional)" value="{{ old('impersonation_id.' . $index) }}" autocomplete="off" />
+                                                                <datalist id="impersonations">
+                                                                    @if (!empty($impersonations))
+                                                                        @foreach ($impersonations as $impersonation)
+                                                                            <option value="{{ $impersonation->text }}" {{ old('impersonation_id.' . $index) == $impersonation->text ? 'selected' : '' }}>{{ $impersonation->text }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </datalist>
 
-                                                    <div class="col-sm-1">
-                                                        @if ($index > 0)
-                                                            <button class="btn btn-light remove-mp3" type="button">&minus;</button>
-                                                        @else
-                                                            <button class="btn btn-light" type="button" id="add-mp3">&plus;</button>
-                                                        @endif
+                                                                @error('impersonation_id.' . $index)
+                                                                    <span style="color: #e85252;" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div style="display: inline-flex;">
+                                                            <div class="col-sm-6">
+                                                                <input type="text" class="form-control" name="mp3_title[]" placeholder="John Doe - Hard Sell" value="{{ old('mp3_title.' . $index) }}" required />
+
+                                                                @error('mp3_title.' . $index)
+                                                                    <span style="color: #e85252;" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+
+                                                            <div class="col-sm-5" style="min-width: 47%;">
+                                                                <input type="text" class="form-control" name="mp3[]" placeholder="https://test.mp3" value="{{ old('mp3.' . $index) }}" required />
+
+                                                                @error('mp3.' . $index)
+                                                                    <span style="color: #e85252;" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+
+                                                            <div class="col-sm-1">
+                                                                @if ($index > 0)
+                                                                    <button class="btn btn-light remove-mp3" type="button">&minus;</button>
+                                                                @else
+                                                                    <button class="btn btn-light" type="button" id="add-mp3">&plus;</button>
+                                                                @endif
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             @endforeach
                                         @else
-                                            <div style="display: inline-flex;" id="fixed-mp3">
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" name="mp3_title[]" placeholder="John Doe - Hard Sell" value="{{ old('mp3_title.0') }}" required />
+                                            <div id="fixed-mp3">
+                                                <div class="row">
+                                                    <div style="display: inline-flex;">
+                                                        <div class="col-sm-6">
+                                                            <input list="languages" name="language_id[]" class="form-control" required placeholder="Language : Enter new or choose any of one." value="{{ old('language_id.0') }}" autocomplete="off" />
+                                                            <datalist id="languages">
+                                                                @if (!empty($languages))
+                                                                    @foreach ($languages as $language)
+                                                                        <option value="{{ $language->text }}" {{ old('language_id.0') == $language->text ? 'selected' : '' }}>{{ $language->text }}</option>
+                                                                    @endforeach
+                                                                @endif
+                                                            </datalist>
 
-                                                    @error('mp3_title.0')
-                                                        <span style="color: #e85252;" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                                            @error('language_id.0')
+                                                                <span style="color: #e85252;" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input list="accents" name="accent_id[]" class="form-control" placeholder="Accent : Enter new or choose any of one. (Optional)" value="{{ old('accent_id.0') }}" autocomplete="off" />
+                                                            <datalist id="accents">
+                                                                @if (!empty($accents))
+                                                                    @foreach ($accents as $accent)
+                                                                        <option value="{{ $accent->text }}" {{ old('accent_id.0') == $accent->text ? 'selected' : '' }}>{{ $accent->text }}</option>
+                                                                    @endforeach
+                                                                @endif
+                                                            </datalist>
+
+                                                            @error('accent_id.0')
+                                                                <span style="color: #e85252;" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div style="display: inline-flex;">
+                                                        <div class="col-sm-6">
+                                                            <input list="delivery_styles" name="delivery_style_id[]" class="form-control" placeholder="Delivery Style : Enter new or choose any of one. (Optional)" value="{{ old('delivery_style_id.0') }}" autocomplete="off" />
+                                                            <datalist id="delivery_styles">
+                                                                @if (!empty($deliveryStyles))
+                                                                    @foreach ($deliveryStyles as $deliveryStyle)
+                                                                        <option value="{{ $deliveryStyle->text }}" {{ old('delivery_style_id.0') == $deliveryStyle->text ? 'selected' : '' }}>{{ $deliveryStyle->text }}</option>
+                                                                    @endforeach
+                                                                @endif
+                                                            </datalist>
 
-                                                <div class="col-sm-5" style="min-width: 47%;">
-                                                    <input type="text" class="form-control" name="mp3[]" placeholder="https://test.mp3" value="{{ old('mp3.0') }}" required />
+                                                            @error('delivery_style_id.0')
+                                                                <span style="color: #e85252;" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <input list="characters" name="character_id[]" class="form-control" placeholder="Character : Enter new or choose any of one. (Optional)" value="{{ old('character_id.0') }}" autocomplete="off" />
+                                                            <datalist id="characters">
+                                                                @if (!empty($characters))
+                                                                    @foreach ($characters as $character)
+                                                                        <option value="{{ $character->text }}" {{ old('character_id.0') == $character->text ? 'selected' : '' }}>{{ $character->text }}</option>
+                                                                    @endforeach
+                                                                @endif
+                                                            </datalist>
 
-                                                    @error('mp3.0')
-                                                        <span style="color: #e85252;" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                                            @error('character_id.0')
+                                                                <span style="color: #e85252;" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div style="display: inline-flex;">
+                                                        <div class="col-sm-12">
+                                                            <input list="impersonations" name="impersonation_id[]" class="form-control" placeholder="Impersonation : Enter new or choose any of one. (Optional)" value="{{ old('impersonation_id.0') }}" autocomplete="off" />
+                                                            <datalist id="impersonations">
+                                                                @if (!empty($impersonations))
+                                                                    @foreach ($impersonations as $impersonation)
+                                                                        <option value="{{ $impersonation->text }}" {{ old('impersonation_id.0') == $impersonation->text ? 'selected' : '' }}>{{ $impersonation->text }}</option>
+                                                                    @endforeach
+                                                                @endif
+                                                            </datalist>
 
-                                                <div class="col-sm-1">
-                                                    <button class="btn btn-light" type="button" id="add-mp3">&plus;</button>
+                                                            @error('impersonation_id.0')
+                                                                <span style="color: #e85252;" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div style="display: inline-flex;">
+                                                        <div class="col-sm-6">
+                                                            <input type="text" class="form-control input-group" name="mp3_title[]" placeholder="John Doe - Hard Sell" value="{{ old('mp3_title.0') }}" required />
+
+                                                            @error('mp3_title.0')
+                                                                <span style="color: #e85252;" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+                                                        <div class="col-sm-5" style="min-width: 47%;">
+                                                            <input type="text" class="form-control input-group" name="mp3[]" placeholder="https://test.mp3" value="{{ old('mp3.0') }}" required />
+
+                                                            @error('mp3.0')
+                                                                <span style="color: #e85252;" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+                                                        <div class="col-sm-1">
+                                                            <button class="btn btn-light" type="button" id="add-mp3">&plus;</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
                                             </div>
                                         @endif
                                     </div>

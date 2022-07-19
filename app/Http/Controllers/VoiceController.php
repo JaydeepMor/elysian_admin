@@ -31,9 +31,22 @@ class VoiceController extends BaseController
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $voices = Voice::paginate(Voice::PAGINATE_RECORDS);
+        $search = $request->get('s', '');
+
+        $model  = new Voice();
+
+        $voices = $model::query();
+
+        if (!empty($search)) {
+            $voices->where(function($query) use($search) {
+                $query->where('name', 'LIKE', '%' . $search . '%')
+                      ->orWhere('user_name', 'like', '%' . $search . '%');
+            });
+        }
+
+        $voices = $voices->paginate(Voice::PAGINATE_RECORDS);
 
         return view('index', compact('voices'));
     }

@@ -30,11 +30,27 @@
                         </a>
                     </div>
                 </div>
+
                 <hr>
                 <div class="table-responsive">
+                    <form>
+                        <div class="row" style="padding: 10px;">
+                            <div class="col-md-4">
+                                <input type="text" name="s" value="{{ request()->get('s', '') }}" class="form-control" placeholder="Search by Name or Username" />
+                            </div>
+
+                            <div class="col-md-2">
+                                <input type="submit" value="Search" class="btn btn-secondary">
+                            </div>
+                        </div>
+                    </form>
+
+                    <br />
+
                     <table class="table align-middle mb-0">
                         <thead class="table-light">
                             <tr>
+                                <th>Action</th>
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Profile</th>
@@ -47,25 +63,12 @@
                                 <th>Characters</th>
                                 <th>Impersonation</th>
                                 <th>Home Studio</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (!empty($voices) && !$voices->isEmpty())
                                 @foreach ($voices as $key => $voice)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $voice->name }}</td>
-                                        <td>{{ $voice->user_name }}</td>
-                                        <td>{{ $voice->gender->text }}</td>
-                                        <td>{{ $voice->ageGroup->text }}</td>
-                                        <td>{{ $voice->race->text }}</td>
-                                        <td>{{ implode(", ", $voice->languages->pluck('text')->toArray()) }}</td>
-                                        <td>{{ (!empty($voice->accents) && !$voice->accents->isEmpty()) ? implode(", ", $voice->accents->pluck('text')->toArray()) : '-' }}</td>
-                                        <td>{{ (!empty($voice->deliveryStyles) && !$voice->deliveryStyles->isEmpty()) ? implode(", ", $voice->deliveryStyles->pluck('text')->toArray()) : '-' }}</td>
-                                        <td>{{ (!empty($voice->characters) && !$voice->characters->isEmpty()) ? implode(", ", $voice->characters->pluck('text')->toArray()) : '-' }}</td>
-                                        <td>{{ (!empty($voice->impersonations) && !$voice->impersonations->isEmpty()) ? implode(", ", $voice->impersonations->pluck('text')->toArray()) : '-' }}</td>
-                                        <td>{{ !empty($voice->homeStudio) ? $voice->homeStudio->text : '-' }}</td>
                                         <td>
                                             <div class="d-flex order-actions">
                                                 <a href="{{ route('voices.edit', $voice->id) }}"><i class="bx bx-edit"></i></a>
@@ -79,6 +82,18 @@
                                                 </form>
                                             </div>
                                         </td>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $voice->name }}</td>
+                                        <td>{{ $voice->user_name }}</td>
+                                        <td>{{ $voice->gender->text }}</td>
+                                        <td>{{ $voice->ageGroup->text }}</td>
+                                        <td>{{ $voice->race->text }}</td>
+                                        <td>{{ implode(", ", $voice->languages->pluck('text')->toArray()) }}</td>
+                                        <td>{{ (!empty($voice->accents) && !$voice->accents->isEmpty()) ? implode(", ", $voice->accents->pluck('text')->toArray()) : '-' }}</td>
+                                        <td>{{ (!empty($voice->deliveryStyles) && !$voice->deliveryStyles->isEmpty()) ? implode(", ", $voice->deliveryStyles->pluck('text')->toArray()) : '-' }}</td>
+                                        <td>{{ (!empty($voice->characters) && !$voice->characters->isEmpty()) ? implode(", ", $voice->characters->pluck('text')->toArray()) : '-' }}</td>
+                                        <td>{{ (!empty($voice->impersonations) && !$voice->impersonations->isEmpty()) ? implode(", ", $voice->impersonations->pluck('text')->toArray()) : '-' }}</td>
+                                        <td>{{ !empty($voice->homeStudio) ? $voice->homeStudio->text : '-' }}</td>
                                     </tr>
                                 @endforeach
                             @else
